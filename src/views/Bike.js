@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 import { View, Text, TextInput, TouchableHighlight, Image, StyleSheet } from 'react-native';
-import MyButton from './my_button';
 
 export function Bike(props) {
+
+    // cambia el estado a no libre
+    async function changeLibre(id) {
+        await fetch(`/vehiculos/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+    }
 
     return (
         <View style={styles.container}>
@@ -19,13 +29,16 @@ export function Bike(props) {
                 <Image style={{ top: 20, left: 20, width: 150, height: 150, alignItems: 'center' }} source={require('../assets/bike.png')} />
                 <View style={styles.info}>
                     {/* <Text style={styles.texto}>Distancia: </Text> */}
-                    <Text style={styles.texto}>Precio: </Text>
+                    <Text style={styles.texto}>Precio: 0,2€/min</Text>
                 </View>
 
                 {/* <TouchableHighlight style={styles.button} onPress={() => props.navigation.navigate("malAparcado")}>
                     <Text style={styles.textButton}>¿Mal aparcado?</Text>
                 </TouchableHighlight> */}
-                <TouchableHighlight style={styles.button} onPress={() => props.navigation.navigate("QR")}>
+                <TouchableHighlight style={styles.button} onPress={() => {
+                    props.navigation.navigate("QR");
+                    changeLibre();
+                }}>
                     <Text style={styles.textButton}>Utilizar</Text>
                 </TouchableHighlight>
 

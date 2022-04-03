@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { View, Text, TextInput, TouchableHighlight, Image, StyleSheet } from 'react-native';
-import MyButton from './my_button';
 
-export function Map(props) {
+export function User(props) {
 
     return (
         <View style={styles.container}>
@@ -84,4 +83,4 @@ const styles = StyleSheet.create({
         fontSize: 40
     }
 });
-export default Map;
+export default User;

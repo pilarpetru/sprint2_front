@@ -13,6 +13,7 @@ import malAparcado from './src/views/malAparcado';
 import QR from './src/views/QR';
 import encurso from './src/views/encurso';
 import resumen from './src/views/resumen';
+import noDisponible from './src/views/noDisponible';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
           <Stack.Screen name="QR" component={QR} />
           <Stack.Screen name="encurso" component={encurso} />
           <Stack.Screen name="resumen" component={resumen} />
+          <Stack.Screen name="noDisponible" component={noDisponible} />
         </Stack.Navigator>
     </NavigationContainer>
   );

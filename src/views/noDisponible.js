@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, Text, TextInput, TouchableHighlight, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableHighlight, Image, StyleSheet } from 'react-native';
 
-export function QR(props) {
+export function noDisponible(props) {
 
     return (
         <View style={styles.container}>
@@ -13,11 +13,13 @@ export function QR(props) {
                     Hi-Go!
                 </Text>
             </View>
+            <View style={styles.user}>
+                <Image style={{ top: 20, left: 20, width: 150, height: 150, alignItems: 'center' }} source={require('../assets/sad.png')} />
+                <View style={styles.info}>
+                    <Text style={styles.texto}>Lo sentimos, este vehículo no se encuentra disponible. </Text>
+                </View>
 
-            <TouchableHighlight style={styles.button} onPress={() => props.navigation.navigate("encurso")}>
-                <Text style={styles.textButton}>Utilizar</Text>
-            </TouchableHighlight>
-
+            </View>
         </View>
     );
 };
@@ -35,12 +37,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    bike: {
+    user: {
         backgroundColor: '#FEFAE0',
-        height: 700
+        height: 700,
+        alignItems: 'center'
     },
     info: {
-        left: 70,
+        // left: 70,
         top: 70,
         marginBottom: 20
     },
@@ -50,23 +53,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Times New Roman'
     },
-    button: {
-        alignSelf: 'center',
-        width: 350,
-        height: 60,
-        bottom: 15,
-        // top: 170,
-        borderRadius: 50,
-        backgroundColor: '#333333',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 25
-    },
-    textButton: {
-        color: '#FEFAE0',
-        fontWeight: 'bold',
-        fontFamily: 'AmericanTypewriter-Bold',
-        fontSize: 40
-    }
 });
-export default QR;
+export default noDisponible;

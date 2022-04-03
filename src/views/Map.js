@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { View, Text, TextInput, TouchableHighlight, Image } from 'react-native';
-import MyButton from './my_button';
 
 // Mapa google maps
 import { StyleSheet, Dimensions } from 'react-native';
@@ -39,16 +38,18 @@ export function Map(props) {
             >
                 {MARKERS_DATA.map((marker) => (
                     <Marker
-                        key={marker.id}
+                        key={marker.idveh}
                         coordinate={{
-                            latitude: marker.latitude,
-                            longitude: marker.longitude,
+                            latitude: marker.ubicacion[0],
+                            longitude: marker.ubicacion[1],
                         }}
-                        onPress={() => marker.img === Bike ? props.navigation.navigate("Bike") : props.navigation.navigate("Patinete")}
+                        onPress= {() => marker.libre? (marker.tipo === Bike ? props.navigation.navigate("Bike") : props.navigation.navigate("Patinete")): props.navigation.navigate("noDisponible")}
+                        // onPress={() => marker.tipo === Bike ? props.navigation.navigate("Bike") : props.navigation.navigate("Patinete")}
                         style={styles.marker}
+                        // opacity={marker.libre ? 1.0 : 0.0}
                     >
                         <View style={{ width: 50 }}>
-                            <Image source={marker.img} />
+                            <Image source={marker.tipo} />
                         </View>
                     </Marker>
                 ))}
